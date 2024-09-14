@@ -2,7 +2,7 @@ const path = require("path");
    
 module.exports = {
     mode: "development",
-    entry: "./app/app.jsx", // входная точка - исходный файл
+    entry: "./src/index.jsx", // входная точка - исходный файл
     output:{
         path: path.resolve(__dirname, "./public"),     // путь к каталогу выходных файлов - папка public
         publicPath: "/public/",
@@ -23,9 +23,13 @@ module.exports = {
                 exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
                 loader: "babel-loader",   // определяем загрузчик
                 options:{
-                    presets:[ "@babel/preset-react"]    // используемые плагины
+                    presets:[ "@babel/preset-react" ]    // используемые плагины
                 }
-            }
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
         ]
     }
 }
